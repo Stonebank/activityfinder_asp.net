@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="~/activityfinder_asp.net.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    <section>
+        <header>
         <a href="#" class="logo"><img src="@Url.Content("~/image/hk-logo.png")"/></a>
          <ul>
             <li><a asp-action="index">Home</a></li>
@@ -18,6 +19,14 @@
             <li><a href="#">Login</a></li>
             <li><a href="#">Register</a></li>
         </ul>
+        </header>
+        @RenderBody()
+          <footer class="border-top footer text-muted">
+        <div class="container">
+            Created by Hassan K, student ID: s205409 at the Techincal University of Denmark
+        </div>
+           </footer>
+    </section>
         <!--<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">activityfinder_asp.net</a>
@@ -37,18 +46,7 @@
                 @*</div>*@
             </div>
         </nav>-->
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            Created by Hassan K, student ID: s205409 at the Techincal University of Denmark
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,16 +1,4 @@
-﻿
-section {
-    position: relative;
-    min-height: 100vh;
-    min-width: 1800px;
-    padding: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #fff;
-}
-
-.content {
+﻿.content {
     position: relative;
     width: 100%;
     display: flex;
