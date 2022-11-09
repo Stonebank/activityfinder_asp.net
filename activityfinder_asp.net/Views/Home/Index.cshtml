@@ -1,8 +1,33 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="~/css/home.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <section>
+        <div class="content">
+            <div class="textBox">
+                <h2>It has never been easier to find <span>something to do</span></h2>
+                <p>With just a tap, discover nearby activities like sightseeing, exploring and experiencing.</p>
+                <a href="#">Get started</a>
+            </div>
+            <div class="imgBox">
+                <img class="activity-image" src="@Url.Content("~/image/homepage/home-image.png")" alt="activityimage"/>
+            </div>
+        </div>
+         <ul class="social-media">
+        <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+    </section>
+</body>
+
+<!---<div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+</div>--->

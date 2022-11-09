@@ -3,14 +3,22 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - activityfinder_asp.net</title>
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" type="image/png" href="~/image/hk-logo.png"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/activityfinder_asp.net.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <a href="#" class="logo"><img src="@Url.Content("~/image/hk-logo.png")"/></a>
+         <ul>
+            <li><a asp-action="index">Home</a></li>
+            <li><a href="#">Discover</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+        </ul>
+        <!--<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">activityfinder_asp.net</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -26,9 +34,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
-                </div>
+                @*</div>*@
             </div>
-        </nav>
+        </nav>-->
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -38,7 +46,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - activityfinder_asp.net - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            Created by Hassan K, student ID: s205409 at the Techincal University of Denmark
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
