@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
+    <title>@ViewData["Title"] - activityfinder</title>
     <link rel="icon" type="image/png" href="~/image/hk-logo.png"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -16,8 +16,8 @@
          <ul>
             <li><a asp-action="index">Home</a></li>
             <li><a href="#">Discover</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Register</a></li>
+            <li><a asp-action="login">Login</a></li>
+            <li><a asp-action="register">Register</a></li>
         </ul>
         </header>
         @RenderBody()
@@ -25,7 +25,7 @@
         <div class="container">
             Created by Hassan K, student ID: s205409 at the Techincal University of Denmark
         </div>
-           </footer>
+            </footer>
     </section>
         <!--<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">

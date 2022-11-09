@@ -13,6 +13,16 @@ namespace activityfinder_asp.net.Controllers
             _logger = logger;
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();

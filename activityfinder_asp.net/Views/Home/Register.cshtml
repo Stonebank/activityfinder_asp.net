@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Sign up";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/register.css" />
+</head>
+
+<body>
+     <div class="center">
+        <h1>Sign up to get started!</h1>
+        <form method="post">
+            <div class="txt_field">
+                <input name="name" id="fullname" type="text" required />
+                <span></span>
+                <label>Full name</label>
+            </div>
+        <div class="txt_field">
+            <input type="email" name="email" id="email" required />
+            <span></span>
+            <label>Email</label>
+        </div>
+        <div class="txt_field">
+            <input type="email" name="repeat_email" id="repeat_email" required />
+            <span></span>
+            <label>Repeat e-mail</label>
+        </div>
+        <div class="txt_field">
+            <input name="password" id="password" type="password" required />
+            <span></span>
+            <label>Password</label>
+        </div>
+        <div class="txt_field">
+                <input name="repeat_password" id="repeat_password" type="password" required />
+                <span></span>
+                <label>Repeat password</label>
+            </div>
+        <div class="pass">
+            Forgot your password?
+        </div>
+            <input type="submit" value="Let's get started!">
+            <div class="has-account">
+            Already have an account? <a asp-action="login">Log in</a>
+        </div>
+    </form>
+    </div>
+</body>
