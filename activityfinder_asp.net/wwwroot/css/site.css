@@ -5,7 +5,6 @@ body {
     margin: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    background-color: #F6F8F3;
 }
 
 section {
@@ -16,7 +15,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #fff;
+    background: #F6F8F3;
 }
 
 header {
