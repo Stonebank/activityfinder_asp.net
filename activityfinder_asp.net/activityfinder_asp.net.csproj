@@ -13,4 +13,8 @@
     <None Remove="Views\NewFolder\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Home\Privacy.cshtml" />
+  </ItemGroup>
+
 </Project>

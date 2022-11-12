@@ -10,12 +10,16 @@
     <link rel="stylesheet" href="~/activityfinder_asp.net.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <ejs-scripts></ejs-scripts>
     <section>
         <header>
         <a href="#" class="logo"><img src="@Url.Content("~/image/hk-logo.png")"/></a>
          <ul>
             <li><a asp-action="index">Home</a></li>
-            <li><a href="#">Discover</a></li>
+            <li><a asp-action="discover">Discover</a></li>
             <li><a asp-action="login">Login</a></li>
             <li><a asp-action="register">Register</a></li>
         </ul>
@@ -46,7 +50,6 @@
                 @*</div>*@
             </div>
         </nav>-->
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

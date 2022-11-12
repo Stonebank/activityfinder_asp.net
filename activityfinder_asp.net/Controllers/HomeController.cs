@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
+
 namespace activityfinder_asp.net.Controllers
 {
     public class HomeController : Controller
@@ -28,9 +29,15 @@ namespace activityfinder_asp.net.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Discover()
         {
             return View();
+        }
+
+        [HttpPost]
+        public void Test(string coords)
+        {
+            Debug.WriteLine(coords);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

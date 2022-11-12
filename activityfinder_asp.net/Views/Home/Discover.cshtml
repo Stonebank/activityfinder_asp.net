@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "Discover";
+}
+
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/css/discover.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+    <section>
+        <div class="swiper mySwiper container">
+            <div class="swiper-wrapper content">
+               @for (int i = 0; i < 10; i++) {
+               <div class="swiper-slide card">
+                        <div class="card-content">
+                            <div class="image">
+                                <img src="~/image/hk-logo.png" alt="image" />
+                            </div>
+                            <div class="activity-info">
+                                <span class="name">Example</span>
+                                <span class="address">Example address</span>
+                                <span class="distance">999 km</span>
+                        </div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="like">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                            <div class="button">
+                                <button class="send-coords" id="coordbutton">Send to Google Maps</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="swiper-button-next">
+            </div>
+            <div class="swiper-button-prev">
+            </div>
+            <div class="swiper-pagination">
+            </div>
+            </div>
+        <script>
+            const swiper = new Swiper(".mySwiper", {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                slidesPerGroup: 3,
+                loop: true,
+                loopFillGroupWithBlank: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        </script>
+    </section>
+</body>
