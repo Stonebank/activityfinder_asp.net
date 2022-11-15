@@ -7,7 +7,7 @@ namespace activityfinder_asp.net.Models.Activities
     public class Activity
     {
 
-        public static List<Activity> activities;
+        public static List<Activity>? activities;
 
         public Coordinate Coordinate { get; set; }
 

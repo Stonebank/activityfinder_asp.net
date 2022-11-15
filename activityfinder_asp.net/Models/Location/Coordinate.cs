@@ -6,9 +6,9 @@
         public double Latitude { get; set;  }
         public double Longitude { get; set; }
 
-        public Coordinate(double latititude, double longitude)
+        public Coordinate(double latitude, double longitude)
         {
-            this.Latitude = latititude;
+            this.Latitude = latitude;
             this.Longitude = longitude;
         }
 

@@ -1,4 +1,5 @@
 ﻿using activityfinder_asp.net.Models;
+using activityfinder_asp.net.Models.Location;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -38,6 +39,11 @@ namespace activityfinder_asp.net.Controllers
         public void Test(string coords)
         {
             Debug.WriteLine(coords);
+            double lat = Convert.ToDouble(coords.Split(" ")[0].Replace(".", ","));
+            double lon = Convert.ToDouble(coords.Split(" ")[1].Replace(".", ","));
+            Debug.WriteLine(lat + " " + lon);
+            UserLocation userLocation = new UserLocation(new Coordinate(lat, lon));
+            Debug.WriteLine(userLocation.Coordinate.Latitude + " " + userLocation.Coordinate.Longitude);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
