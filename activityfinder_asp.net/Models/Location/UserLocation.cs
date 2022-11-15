@@ -30,14 +30,8 @@ namespace activityfinder_asp.net.Models.Location
             }
         }
 
-        public string PrintHello()
-        {
-            return "Hello";
-        }
-
         public string GetDistance(Activity activity)
         {
-            Debug.WriteLine(CalculateDistance(activity.Coordinate));
             return Math.Round(CalculateDistance(activity.Coordinate)) + " km";
         }
 

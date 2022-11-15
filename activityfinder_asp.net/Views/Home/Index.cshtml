@@ -34,7 +34,7 @@
             const coords = pos.coords.latitude + " " + pos.coords.longitude;
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("Test", "Home")',
+                url: '@Url.Action("FetchCoordinates", "Home")',
                 data: { coords: coords },
                 success: function (recData) { console.log("Successful sent coordinates") },
                 error: function () { console.log("Error. Coordinates were not sent") }
