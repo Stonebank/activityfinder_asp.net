@@ -3,8 +3,8 @@
 
     public class Coordinate {
 
-        private double Latitude { get; set;  }
-        private double Longitude { get; set; }
+        public double Latitude { get; set;  }
+        public double Longitude { get; set; }
 
         public Coordinate(double latititude, double longitude)
         {

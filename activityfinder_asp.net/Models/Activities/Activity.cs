@@ -7,23 +7,30 @@ namespace activityfinder_asp.net.Models.Activities
     public class Activity
     {
 
-        public static ArrayList activities = new ArrayList();
+        public static List<Activity> activities;
 
-        private Coordinate Coordinate { get; set; }
+        public Coordinate Coordinate { get; set; }
 
-        private string Name { get; set; }
-        private string City { get; set; }
+        public string Name { get; set; }
+        public string City { get; set; }
 
-        private string Link { get; set; }
-        private string Image_Path { get; set; }
+        public string Image_Path { get; set; }
 
-        private int Points { get; set; }
+        public int Points { get; set; }
 
-        private int[] Ratings { get; set; }
+        public int[] Ratings { get; set; }
 
-        private bool IsFavorite { get; set; }
+        public bool IsFavorite { get; set; }
 
+        public string Link()
+        {
+            string lat = Coordinate.Latitude.ToString().Replace(",", ".");
+            string lon = Coordinate.Longitude.ToString().Replace(",", ".");
+            return "http://www.google.com/maps/place/" + lat + "," + lon;
+        }
 
+ 
     }
+
 
 }
