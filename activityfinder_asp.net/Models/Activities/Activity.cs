@@ -1,5 +1,7 @@
 ﻿using activityfinder_asp.net.Models.Location;
+using Newtonsoft.Json;
 using System.Collections;
+using System.Diagnostics;
 
 namespace activityfinder_asp.net.Models.Activities
 {
@@ -21,6 +23,17 @@ namespace activityfinder_asp.net.Models.Activities
         public int[] Ratings { get; set; }
 
         public bool IsFavorite { get; set; }
+
+        public static void ParseAndLoadJson()
+        {
+            using (StreamReader reader = File.OpenText("activity.json"))
+            {
+                string json = reader.ReadToEnd();
+                activities = JsonConvert.DeserializeObject<List<Activity>>(json);
+            }
+            if (activities != null)
+                Debug.WriteLine("[Activity class] Initialized " + activities.Count + " activities");
+        }
 
         public string Link()
         {

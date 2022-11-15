@@ -1,8 +1,10 @@
-﻿
+﻿@using activityfinder_asp.net.Models.Location;
+
+@model UserLocation
+
 @{
     ViewData["Title"] = "Discover";
 }
-
 
 <head>
     <meta charset="utf-8" />
@@ -17,7 +19,7 @@
         <div class="swiper mySwiper container">
             <div class="swiper-wrapper content">
                @foreach (var activity in activityfinder_asp.net.Models.Activities.Activity.activities) {
-               <div class="swiper-slide card">
+                    <div class="swiper-slide card">
                         <div class="card-content">
                             <div class="image">
                                 <img src="@activity.Image_Path" alt="image" />
@@ -25,8 +27,8 @@
                             <div class="activity-info">
                                 <span class="name">@activity.Name</span>
                                 <span class="address">@activity.City</span>
-                                <span class="distance">999 km</span>
-                        </div>
+                                <span class="distance">@Model.GetDistance(activity)</span>
+                            </div>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
                             </div>

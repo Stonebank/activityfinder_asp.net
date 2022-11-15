@@ -12,6 +12,8 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+Activity.ParseAndLoadJson();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -30,14 +32,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-using (StreamReader reader = File.OpenText("activity.json"))
-{
-    string json = reader.ReadToEnd();
-    Debug.WriteLine(json);
-    Activity.activities = JsonConvert.DeserializeObject<List<Activity>>(json);
-    Debug.WriteLine(Activity.activities[0].Link);
-}
 
 
 app.Run();

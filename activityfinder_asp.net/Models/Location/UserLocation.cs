@@ -1,4 +1,8 @@
-﻿namespace activityfinder_asp.net.Models.Location
+﻿using activityfinder_asp.net.Models.Activities;
+using System.Diagnostics;
+using Activity = activityfinder_asp.net.Models.Activities.Activity;
+
+namespace activityfinder_asp.net.Models.Location
 {
     public class UserLocation
     {
@@ -15,6 +19,26 @@
         public UserLocation(Coordinate coordinate)
         {
             this.Coordinate = coordinate;
+        }
+
+        public async void ParseWeatherData()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                var json = await httpClient.GetStringAsync("https://api.openweathermap.org/data/2.5/weather?lat=" + Coordinate.Latitude + "&lon=" + Coordinate.Longitude + "&appid=" + Constant.WEATHER_API_KEY + "&units=" + Constant.WEATHER_UNIT_OUTPUT);
+                Debug.WriteLine(json);
+            }
+        }
+
+        public string PrintHello()
+        {
+            return "Hello";
+        }
+
+        public string GetDistance(Activity activity)
+        {
+            Debug.WriteLine(CalculateDistance(activity.Coordinate));
+            return Math.Round(CalculateDistance(activity.Coordinate)) + " km";
         }
 
         public double CalculateDistance(Coordinate toCoordinate)
