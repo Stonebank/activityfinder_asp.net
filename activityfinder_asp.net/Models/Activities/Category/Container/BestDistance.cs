@@ -10,7 +10,7 @@ namespace activityfinder_asp.net.Models.Activities.Category.Container
         public override void Compare(UserLocation userLocation)
         {
 
-            if (activities is null || Activity.activities is null)
+            if (Activity.activities is null)
             {
                 throw new Exception("Error! Comparing algorithm could not be performed.");
             }

@@ -1,8 +1,9 @@
 ﻿using activityfinder_asp.net.Models;
+using activityfinder_asp.net.Models.Activities.Category;
+using activityfinder_asp.net.Models.Activities.Category.Container;
 using activityfinder_asp.net.Models.Location;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-
 
 namespace activityfinder_asp.net.Controllers
 {
@@ -40,15 +41,37 @@ namespace activityfinder_asp.net.Controllers
                 lon = Convert.ToDouble(coords.Split(" ")[1].Replace(".", ","));
                 Debug.WriteLine("After converting: " + lat + " " + lon);
             }
-            UserLocation UserLocation = new UserLocation(new Coordinate(lat, lon));
-            return View(UserLocation);
+
+            UserLocation userLocation = new UserLocation(new Coordinate(lat, lon));
+
+            List<Category> categories = new List<Category>();
+            categories.Add(new BestDistance());
+            categories.Add(new BestWeather());
+
+            categories.ForEach(c =>
+            {
+                c.Compare(userLocation);
+                c.AddPoints();
+                if (c.BestCandidate() != null)
+                {
+                    Debug.WriteLine("Best candidate: " + c.BestCandidate().Name);
+                }
+            });
+
+            if (Models.Activities.Activity.activities is not null)
+            {
+                Models.Activities.Activity.activities = Models.Activities.Activity.activities.OrderBy(o => o.Points).ToList();
+
+            }
+
+            return View(userLocation);
         }
 
         [HttpPost]
         public void FetchCoordinates(string coords)
         {
-            //var lat = Convert.ToDouble(coords.Split(" ")[0].Replace(".", ","));
-            //var lon = Convert.ToDouble(coords.Split(" ")[1].Replace(".", ","));
+            var lat = Convert.ToDouble(coords.Split(" ")[0].Replace(".", ","));
+            var lon = Convert.ToDouble(coords.Split(" ")[1].Replace(".", ","));
 
             //Debug.WriteLine("{0}, {0}", lat, lon);
   

@@ -29,12 +29,12 @@ namespace activityfinder_asp.net.Models.Activities.Category.Container
 
         public override void AddPoints()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override Activity BestCandidate()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
     }
