@@ -5,6 +5,7 @@ using activityfinder_asp.net.Models.Dto;
 using activityfinder_asp.net.Models.Location;
 using activityfinder_asp.net.Security;
 using activityfinder_asp.net.Service;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -19,8 +20,22 @@ namespace activityfinder_asp.net.Controllers
             _logger = logger;
         }
 
-        public IActionResult Register()
+        public IActionResult Register(string token)
         {
+            if (!String.IsNullOrEmpty(token))
+            {
+                AccountHandler accountHandler = new AccountHandler();
+                Account account = accountHandler.Load(long.Parse(token));
+                if (account is null)
+                {
+                    TempData["Error-Message"] = "Oops... Your verification wasn't successful.";
+                    return View();
+                }
+                account.Verified = true;
+                accountHandler.Save(account);
+                TempData["Successful"] = "Welcome onboard! Your account is now confirmed.";
+            }
+
             return View();
         }
 
@@ -32,11 +47,6 @@ namespace activityfinder_asp.net.Controllers
         public IActionResult Index()
         {
             return View();
-        }
-
-        public IActionResult Test()
-        {
-            return Redirect("Discover");
         }
 
         public IActionResult Discover(string coords)
@@ -106,10 +116,16 @@ namespace activityfinder_asp.net.Controllers
                 TempData["Error-Message"] = "The two passwords that you entered do not match.";
                 return View("Register");
             }
-            // password requirement check
-            // send email verification
+            if (!Constant.HasPasswordRequirement(account.Password))
+            {
+                TempData["Error-Message"] = "Error! Password is not strong enough. (debug pass: dTu1235678!)";
+                return View("Register");
+            }
+
             account.Password = AES256.Encrypt(account.Password);
+            accountHandler.SendVerificationEmail(account, Convert.ToString(account.Id));
             accountHandler.Save(account);
+            TempData["Successful"] = "Almost done! We've sent a confirmation e-mail to " + account.Email + ".";
             return View("Register");
         }
 
@@ -134,6 +150,12 @@ namespace activityfinder_asp.net.Controllers
             if (!AES256.Decrypt(user.Password).Equals(account.Password))
             {
                 TempData["Error-Message"] = "Login failed. Invaild e-mail or password.";
+                return View("Login");
+            }
+
+            if (!user.Verified)
+            {
+                TempData["Error-Message"] = "Please verify your account in order to login.";
                 return View("Login");
             }
 

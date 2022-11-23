@@ -1,7 +1,9 @@
 ﻿using activityfinder_asp.net.Models.Dto;
+using activityfinder_asp.net.Security;
 using activityfinder_asp.net.Service.Interface;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Text.Json;
 
 namespace activityfinder_asp.net.Service
@@ -43,12 +45,14 @@ namespace activityfinder_asp.net.Service
             var json = JsonConvert.SerializeObject(account, Formatting.Indented);
             File.WriteAllText("./data/" + account.Id + ".json", json);
             Debug.WriteLine("[JSON DATA WRITTEN FOR " + account.Id + "]");
-            // TODO: Add in the static array
+            if (!Constant.accounts.Contains(account))
+                Constant.accounts.Add(account);
         }
 
         public void SendVerificationEmail(Account account, string token)
         {
-            
+            string link = "https://localhost:7009/home/register/confirmation?token=" + token;
+            Email.Send(account.Email, "Confirm your registration", "Hello " + account.Name + "!<br><br>Thank you for registering. Click the link below to complete your registration<br>" + link);
         }
 
     }
