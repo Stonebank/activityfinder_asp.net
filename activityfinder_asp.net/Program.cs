@@ -1,4 +1,6 @@
 using activityfinder_asp.net.Models.Activities;
+using activityfinder_asp.net.Models.Dto;
+using activityfinder_asp.net.Security;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
@@ -12,6 +14,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+Account.ParseDataBase();
 Activity.ParseAndLoadJson();
 
 // Configure the HTTP request pipeline.

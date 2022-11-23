@@ -1,6 +1,10 @@
-﻿@{
+﻿@using activityfinder_asp.net.Models.Dto;
+
+@{
     ViewData["Title"] = "Sign up";
 }
+
+@model Account;
 
 <head>
     <meta charset="utf-8" />
@@ -11,39 +15,42 @@
 <body>
      <div class="center">
         <h1>Sign up to get started!</h1>
-        <form method="post">
+        @using (Html.BeginForm("RegisterAccount", "Home", FormMethod.Post))
+        {
+    <div class="txt_field">
+                    <input name="name" id="fullname" type="text" required />
+                    <span></span>
+                    <label>Full name</label>
+                </div>
             <div class="txt_field">
-                <input name="name" id="fullname" type="text" required />
+                <input type="email" name="email" id="email" required />
                 <span></span>
-                <label>Full name</label>
+                <label>Email</label>
             </div>
-        <div class="txt_field">
-            <input type="email" name="email" id="email" required />
-            <span></span>
-            <label>Email</label>
-        </div>
-        <div class="txt_field">
-            <input type="email" name="repeat_email" id="repeat_email" required />
-            <span></span>
-            <label>Repeat e-mail</label>
-        </div>
-        <div class="txt_field">
-            <input name="password" id="password" type="password" required />
-            <span></span>
-            <label>Password</label>
-        </div>
-        <div class="txt_field">
-                <input name="repeat_password" id="repeat_password" type="password" required />
+            <div class="txt_field">
+                <input type="email" name="repeatemail" id="repeatemail" required />
                 <span></span>
-                <label>Repeat password</label>
+                <label>Repeat e-mail</label>
             </div>
-        <div class="pass">
-            Forgot your password?
-        </div>
-            <input type="submit" value="Let's get started!">
-            <div class="has-account">
-            Already have an account? <a asp-action="login">Log in</a>
-        </div>
-    </form>
+            <div class="txt_field">
+                <input name="password" id="password" type="password" required />
+                <span></span>
+                <label>Password</label>
+            </div>
+            <div class="txt_field">
+                    <input name="repeatpassword" id="repeatpassword" type="password" required />
+                    <span></span>
+                    <label>Repeat password</label>
+                </div>
+            <p id="danger" name="danger" class="text-danger">@TempData["Error-Message"]</p>
+            <div class="pass">
+                Forgot your password?
+            </div>
+                <input type="submit" value="Let's get started!">
+                <div class="has-account">
+                Already have an account? <a asp-action="login">Log in</a>
+            </div>
+
+        }
     </div>
 </body>

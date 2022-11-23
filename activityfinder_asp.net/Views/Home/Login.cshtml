@@ -13,7 +13,8 @@
 <body>
     <div class="center">
         <h1>Welcome!</h1>
-        <form method="post">
+         @using (Html.BeginForm("LoginAccount", "Home", FormMethod.Post))
+        {
             <div class="txt_field">
                 <input name="email" id="email" type="text" required />
                 <span></span>
@@ -28,6 +29,7 @@
                 <input type="checkbox" id="show-password" onclick="togglePasswordVisibility()" />
                 <label>Show password</label>
             </div>
+            <p id="danger" name="danger" class="text-danger">@TempData["Error-Message"]</p>
             <div class="pass">
                 Forgot your password?
             </div>
@@ -37,7 +39,7 @@
             <div class="signup">
                 Are you new here? <a asp-action="register">Create an account</a>
             </div>
-    </form>
+        }
     </div>
     <script>
          function togglePasswordVisibility() {

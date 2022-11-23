@@ -25,8 +25,8 @@ namespace activityfinder_asp.net.Models.Location
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                var json = await httpClient.GetStringAsync("https://api.openweathermap.org/data/2.5/weather?lat=" + Coordinate.Latitude + "&lon=" + Coordinate.Longitude + "&appid=" + Constant.WEATHER_API_KEY + "&units=" + Constant.WEATHER_UNIT_OUTPUT);
-                Debug.WriteLine(json);
+                //var json = await httpClient.GetStringAsync("https://api.openweathermap.org/data/2.5/weather?lat=" + Coordinate.Latitude + "&lon=" + Coordinate.Longitude + "&appid=" + Constant.WEATHER_API_KEY + "&units=" + Constant.WEATHER_UNIT_OUTPUT);
+                //Debug.WriteLine(json);
             }
         }
 
