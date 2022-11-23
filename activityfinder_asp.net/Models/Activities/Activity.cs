@@ -13,6 +13,8 @@ namespace activityfinder_asp.net.Models.Activities
 
         public Coordinate Coordinate { get; set; }
 
+        public WeatherType[] WeatherTypes { get; set; }
+
         public string Name { get; set; }
         public string City { get; set; }
 
@@ -23,6 +25,20 @@ namespace activityfinder_asp.net.Models.Activities
         public int[] Ratings { get; set; }
 
         public bool IsFavorite { get; set; }
+
+        public WeatherType GetBestWeather()
+        {
+            return WeatherTypes[0];
+        }
+
+        public WeatherType GetWorstWeather()
+        {
+            if (WeatherTypes.Length > 0)
+            {
+                return WeatherTypes[WeatherTypes.Length - 1];
+            }
+            return WeatherType.NONE;
+        }
 
         public static Activity? GetActivity(string name)
         {
