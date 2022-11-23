@@ -24,6 +24,20 @@ namespace activityfinder_asp.net.Models.Activities
 
         public bool IsFavorite { get; set; }
 
+        public static Activity? GetActivity(string name)
+        {
+            if (activities is null)
+            {
+                throw new ArgumentNullException("Activities array is null.");
+            }
+            for (int i = 0; i < activities.Count; i++)
+            {
+                if (activities[i].Name.ToLower().Equals(name.ToLower()))
+                    return activities[i];
+            }
+            return null;
+        }
+
         public static void ParseAndLoadJson()
         {
             using (StreamReader reader = File.OpenText("activity.json"))

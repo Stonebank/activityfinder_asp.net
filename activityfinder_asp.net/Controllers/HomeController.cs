@@ -10,8 +10,6 @@ namespace activityfinder_asp.net.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private double lat, lon;
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -32,9 +30,16 @@ namespace activityfinder_asp.net.Controllers
             return View();
         }
 
-        public IActionResult Discover()
+        public IActionResult Discover(string coords)
         {
-            Debug.WriteLine("Coords: " + lat + " " + lon);
+            var lat = 1.1;
+            var lon = 1.1;
+            if (coords != null)
+            {
+                lat = Convert.ToDouble(coords.Split(" ")[0].Replace(".", ","));
+                lon = Convert.ToDouble(coords.Split(" ")[1].Replace(".", ","));
+                Debug.WriteLine("After converting: " + lat + " " + lon);
+            }
             UserLocation UserLocation = new UserLocation(new Coordinate(lat, lon));
             return View(UserLocation);
         }
@@ -42,13 +47,12 @@ namespace activityfinder_asp.net.Controllers
         [HttpPost]
         public void FetchCoordinates(string coords)
         {
-            lat = Convert.ToDouble(coords.Split(" ")[0].Replace(".", ","));
-            lon = Convert.ToDouble(coords.Split(" ")[1].Replace(".", ","));
+            //var lat = Convert.ToDouble(coords.Split(" ")[0].Replace(".", ","));
+            //var lon = Convert.ToDouble(coords.Split(" ")[1].Replace(".", ","));
 
-            Debug.WriteLine("{0}, {0}", lat, lon);
+            //Debug.WriteLine("{0}, {0}", lat, lon);
   
         }
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

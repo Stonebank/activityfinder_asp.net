@@ -14,29 +14,29 @@
     <div class="center">
         <h1>Welcome!</h1>
         <form method="post">
-        <div class="txt_field">
-            <input name="email" id="email" type="text" required />
-            <span></span>
-            <label>Email</label>
-        </div>
-        <div class="txt_field">
-            <input name="password" id="password" type="password" required />
-            <span></span>
-            <label>Password</label>
-        </div>
-        <div class="checkbox">
-            <input type="checkbox" id="show-password" onclick="togglePasswordVisibility()" />
-            <label>Show password</label>
-        </div>
-        <div class="pass">
-            Forgot your password?
-        </div>
-        <div class="login-button">
-            <input type="submit" value="Log in" />
-        </div>
-        <div class="signup">
-            Are you new here? <a asp-action="register">Create an account</a>
-        </div>
+            <div class="txt_field">
+                <input name="email" id="email" type="text" required />
+                <span></span>
+                <label>Email</label>
+            </div>
+            <div class="txt_field">
+                <input name="password" id="password" type="password" required />
+                <span></span>
+                <label>Password</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" id="show-password" onclick="togglePasswordVisibility()" />
+                <label>Show password</label>
+            </div>
+            <div class="pass">
+                Forgot your password?
+            </div>
+            <div class="login-button">
+                <input type="submit" value="Log in"/>
+            </div>
+            <div class="signup">
+                Are you new here? <a asp-action="register">Create an account</a>
+            </div>
     </form>
     </div>
     <script>
