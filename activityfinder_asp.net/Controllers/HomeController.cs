@@ -59,7 +59,7 @@ namespace activityfinder_asp.net.Controllers
             return View();
         }
 
-        public IActionResult Discover(string coords)
+        public async Task<IActionResult> Discover(string coords)
         {
 
             ISession session = HttpContext.Session;
