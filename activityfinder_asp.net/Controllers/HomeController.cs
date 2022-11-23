@@ -100,7 +100,7 @@ namespace activityfinder_asp.net.Controllers
         public ActionResult RegisterAccount(Account account)
         {
             AccountHandler accountHandler = new AccountHandler();
-            
+
             if (accountHandler.Load(account.Email) is not null)
             {
                 TempData["Error-Message"] = "The email address you entered is already in use.";
@@ -121,9 +121,8 @@ namespace activityfinder_asp.net.Controllers
                 TempData["Error-Message"] = "Error! Password is not strong enough. (debug pass: dTu1235678!)";
                 return View("Register");
             }
-
             account.Password = AES256.Encrypt(account.Password);
-            accountHandler.SendVerificationEmail(account, Convert.ToString(account.Id));
+            accountHandler.SendVerificationEmail(account, Request.Host.Value, Convert.ToString(account.Id));
             accountHandler.Save(account);
             TempData["Successful"] = "Almost done! We've sent a confirmation e-mail to " + account.Email + ".";
             return View("Register");

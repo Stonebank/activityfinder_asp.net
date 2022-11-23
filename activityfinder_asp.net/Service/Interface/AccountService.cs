@@ -7,7 +7,7 @@ namespace activityfinder_asp.net.Service.Interface
     {
 
         void Save(Account account);
-        void SendVerificationEmail(Account account, string token);
+        void SendVerificationEmail(Account account, string host, string token);
 
         Account Load(string email);
         Account Load(long id);

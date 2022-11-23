@@ -49,9 +49,9 @@ namespace activityfinder_asp.net.Service
                 Constant.accounts.Add(account);
         }
 
-        public void SendVerificationEmail(Account account, string token)
+        public void SendVerificationEmail(Account account, string host, string token)
         {
-            string link = "https://localhost:7009/home/register/confirmation?token=" + token;
+            string link = "https://" + host + "/home/register/confirmation?token=" + token;
             Email.Send(account.Email, "Confirm your registration", "Hello " + account.Name + "!<br><br>Thank you for registering. Click the link below to complete your registration<br>" + link);
         }
 
