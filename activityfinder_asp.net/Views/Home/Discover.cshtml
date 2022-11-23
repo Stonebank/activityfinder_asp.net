@@ -12,18 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<script type="text/javascript">
-        navigator.geolocation.getCurrentPosition(pos => {
-            const coords = pos.coords.latitude + " " + pos.coords.longitude;
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("FetchCoordinates", "Home")',
-                data: { coords: coords },
-                success: function (recData) { console.log("Successful sent coordinates") },
-                error: function () { console.log("Error. Coordinates were not sent") }
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -76,6 +64,19 @@
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
+            });
+        </script>
+        <script type="text/javascript">
+            navigator.geolocation.getCurrentPosition(pos => {
+                const coords = pos.coords.latitude + " " + pos.coords.longitude;
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Discover", "Home")',
+                    async: true,
+                    data: { coords: coords },
+                    success: function (recData) { console.log("Successful sent coordinates") },
+                    error: function () { console.log("Error. Coordinates were not sent") }
+                });
             });
         </script>
     </section>

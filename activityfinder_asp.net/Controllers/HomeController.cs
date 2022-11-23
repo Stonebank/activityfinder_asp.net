@@ -22,6 +22,11 @@ namespace activityfinder_asp.net.Controllers
 
         public IActionResult Register(string token)
         {
+            ISession session = HttpContext.Session;
+            if (session.GetString("email") != null)
+            {
+                return Redirect("index");
+            }
             if (!String.IsNullOrEmpty(token))
             {
                 AccountHandler accountHandler = new AccountHandler();
@@ -41,6 +46,11 @@ namespace activityfinder_asp.net.Controllers
 
         public IActionResult Login()
         {
+            ISession session = HttpContext.Session;
+            if (session.GetString("email") != null)
+            {
+                return Redirect("index");
+            }
             return View();
         }
 
@@ -51,6 +61,13 @@ namespace activityfinder_asp.net.Controllers
 
         public IActionResult Discover(string coords)
         {
+
+            ISession session = HttpContext.Session;
+            if (session.GetString("email") == null)
+            {
+                return Redirect("Login");
+            }
+
             var lat = 1.1;
             var lon = 1.1;
 
@@ -58,9 +75,9 @@ namespace activityfinder_asp.net.Controllers
             {
                 lat = Convert.ToDouble(coords.Split(" ")[0].Replace(".", ","));
                 lon = Convert.ToDouble(coords.Split(" ")[1].Replace(".", ","));
+
             }
 
-           
             UserLocation userLocation = new UserLocation(new Coordinate(lat, lon));
 
             List<Category> categories = new List<Category>();
@@ -92,8 +109,9 @@ namespace activityfinder_asp.net.Controllers
             var lat = Convert.ToDouble(coords.Split(" ")[0].Replace(".", ","));
             var lon = Convert.ToDouble(coords.Split(" ")[1].Replace(".", ","));
 
+       
             //Debug.WriteLine("{0}, {0}", lat, lon);
-  
+
         }
 
         [HttpPost]
@@ -157,8 +175,19 @@ namespace activityfinder_asp.net.Controllers
                 TempData["Error-Message"] = "Please verify your account in order to login.";
                 return View("Login");
             }
-
+            ISession session = HttpContext.Session;
+            session.SetString("email", account.Email);
             return View("Index");
+        }
+
+        public IActionResult Logout()
+        {
+            ISession session = HttpContext.Session;
+            if (session.GetString("email") != null)
+            {
+                session.Remove("email");
+            }
+            return Redirect("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

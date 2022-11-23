@@ -13,7 +13,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
         navigator.geolocation.getCurrentPosition(pos => {
             const coords = pos.coords.latitude + " " + pos.coords.longitude;
             $.ajax({
@@ -24,18 +24,24 @@
                 success: function (recData) { console.log("Successful sent coordinates") },
                 error: function () { console.log("Error. Coordinates were not sent") }
             });
-        });
+        });--->
     </script>
     <ejs-scripts></ejs-scripts>
     <section>
         <header>
-        <a href="#" class="logo"><img src="@Url.Content("~/image/hk-logo.png")"/></a>
+        <a asp-action="index" class="logo"><img src="@Url.Content("~/image/hk-logo.png")"/></a>
          <ul>
             <li><a asp-action="index">Home</a></li>
             <li><a asp-action="discover">Discover</a></li>
-            <li><a asp-action="login">Login</a></li>
-            <li><a asp-action="register">Register</a></li>
-        </ul>
+                @if (Context.Session.GetString("email") != null)
+                {
+                    <li><a asp-action="logout">Logout</a></li>
+                } else
+                {
+                    <li><a asp-action="login">Login</a></li>
+                    <li><a asp-action="register">Register</a></li>
+                }
+            </ul>
         </header>
         @RenderBody()
           <footer class="border-top footer text-muted">
