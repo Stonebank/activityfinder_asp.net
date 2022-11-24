@@ -1,4 +1,5 @@
 ﻿using activityfinder_asp.net.Models;
+using activityfinder_asp.net.Models.Activities;
 using activityfinder_asp.net.Models.Activities.Category;
 using activityfinder_asp.net.Models.Activities.Category.Container;
 using activityfinder_asp.net.Models.Dto;
@@ -8,12 +9,16 @@ using activityfinder_asp.net.Service;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace activityfinder_asp.net.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+
+        private double lat;
+        private double lon;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -59,7 +64,7 @@ namespace activityfinder_asp.net.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Discover(string coords)
+        public IActionResult Discover()
         {
 
             ISession session = HttpContext.Session;
@@ -68,21 +73,15 @@ namespace activityfinder_asp.net.Controllers
                 return Redirect("Login");
             }
 
-            var lat = 1.1;
-            var lon = 1.1;
+            Debug.WriteLine(lat + " "+  lon);
 
-            if (coords is not null)
+            UserLocation userLocation = new UserLocation(new Coordinate(55.7314, 12.3962));
+
+            List<Category> categories = new List<Category>
             {
-                lat = Convert.ToDouble(coords.Split(" ")[0].Replace(".", ","));
-                lon = Convert.ToDouble(coords.Split(" ")[1].Replace(".", ","));
-
-            }
-
-            UserLocation userLocation = new UserLocation(new Coordinate(lat, lon));
-
-            List<Category> categories = new List<Category>();
-            categories.Add(new BestDistance());
-            categories.Add(new BestWeather());
+                new BestDistance(),
+                new BestWeather()
+            };
 
             categories.ForEach(c =>
             {
@@ -96,7 +95,7 @@ namespace activityfinder_asp.net.Controllers
 
             if (Models.Activities.Activity.activities is not null)
             {
-                Models.Activities.Activity.activities = Models.Activities.Activity.activities.OrderBy(o => o.Points).ToList();
+                Models.Activities.Activity.activities = Models.Activities.Activity.activities.OrderBy(o => o.Points).Reverse().ToList();
 
             }
 
@@ -104,14 +103,15 @@ namespace activityfinder_asp.net.Controllers
         }
 
         [HttpPost]
-        public void FetchCoordinates(string coords)
+        public void FetchCoordinates(string[] coords)
         {
-            var lat = Convert.ToDouble(coords.Split(" ")[0].Replace(".", ","));
-            var lon = Convert.ToDouble(coords.Split(" ")[1].Replace(".", ","));
+            var english = CultureInfo.GetCultureInfo("en-GB");
+            Thread.CurrentThread.CurrentCulture = english;
 
-       
-            //Debug.WriteLine("{0}, {0}", lat, lon);
+            lat = Double.Parse(coords[0]);
+            lon = Double.Parse(coords[1]);
 
+            Debug.WriteLine(lat + " " + lon);
         }
 
         [HttpPost]
@@ -193,7 +193,7 @@ namespace activityfinder_asp.net.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel { RequestId = System.Diagnostics.Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

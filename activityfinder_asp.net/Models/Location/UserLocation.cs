@@ -1,11 +1,15 @@
 ﻿using activityfinder_asp.net.Models.Activities;
+using Newtonsoft.Json.Linq;
 using System.Diagnostics;
+using System.Globalization;
 using Activity = activityfinder_asp.net.Models.Activities.Activity;
 
 namespace activityfinder_asp.net.Models.Location
 {
     public class UserLocation
     {
+
+        private JObject jsonObject;
 
         public Coordinate Coordinate { get; set; }
 
@@ -21,13 +25,75 @@ namespace activityfinder_asp.net.Models.Location
             this.Coordinate = coordinate;
         }
 
-        public async void ParseWeatherData()
+        public async void FetchWeatherData()
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                //var json = await httpClient.GetStringAsync("https://api.openweathermap.org/data/2.5/weather?lat=" + Coordinate.Latitude + "&lon=" + Coordinate.Longitude + "&appid=" + Constant.WEATHER_API_KEY + "&units=" + Constant.WEATHER_UNIT_OUTPUT);
-                //Debug.WriteLine(json);
+                var json = await httpClient.GetStringAsync("https://api.openweathermap.org/data/2.5/weather?lat=" + Coordinate.Latitude + "&lon=" + Coordinate.Longitude + "&appid=" + Constant.WEATHER_API_KEY + "&units=" + Constant.WEATHER_UNIT_OUTPUT);
+                jsonObject = JObject.Parse(json);
+                ParseWeatherData();
             }
+        }
+
+        private void ParseWeatherData()
+        {
+            if (jsonObject is null || (Coordinate.Latitude == 0 && Coordinate.Longitude == 0))
+            {
+                throw new Exception("Error! Weather data could not be parsed.");
+            }
+            var main = jsonObject["main"];
+            var weather = jsonObject["weather"];
+            if (main is null || weather is null)
+            {
+                throw new Exception("Error! Something went wrong while parsing the Weather Data...");
+            }
+            current_temperature = Math.Round(main["temp"].Value<Double>());
+            maximum_temperature = Math.Round(main["temp_max"].Value<Double>());
+            minimum_temperature = Math.Round(main["temp_min"].Value<Double>());
+            feels_like = Math.Round(main["feels_like"].Value<Double>());
+
+            string currentWeather = weather[0]["description"].Value<String>();
+
+            switch (currentWeather.ToLower())
+            {
+
+                case "clear sky":
+                case "sunny":
+                case "sun":
+                    WeatherType = WeatherType.SUNNY;
+                    break;
+                case "overcast clouds":
+                case "few clouds":
+                case "scattered clouds":
+                case "broken clouds":
+                    WeatherType = WeatherType.CLOUD;
+                    break;
+                case "shower rain":
+                case "rain":
+                case "mist":
+                case "drizzle":
+                    WeatherType = WeatherType.RAIN;
+                    break;
+                case "thunderstorm":
+                case "tornado":
+                    WeatherType = WeatherType.STORM;
+                    break;
+                case "snow":
+                    WeatherType = WeatherType.SNOW;
+                    break;
+                case "wind":
+                case "windy":
+                    WeatherType = WeatherType.WIND;
+                    break;
+                case "none":
+                    WeatherType = WeatherType.NONE;
+                    break;
+                default:
+                    Debug.WriteLine("WeatherType not detected");
+                    break;
+                 
+            }
+
         }
 
         public string GetDistance(Activity activity)

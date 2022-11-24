@@ -49,12 +49,13 @@ namespace activityfinder_asp.net.Models.Activities.Category.Container
             }
             for (int i = 0; i < activities.Length; i++)
             {
+                int points = (1000 * activities.Length) / (i + 1);
                 Activity activity = Activity.GetActivity(activities[i].Name) ?? activities[0];
                 if (activity == null)
                 {
                     throw new Exception("Error! Could not add points at index " + i);
                 }
-                activity.Points++;
+                activity.Points += points;
             }
         }
 

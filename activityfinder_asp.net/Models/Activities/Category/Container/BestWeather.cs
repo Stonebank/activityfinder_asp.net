@@ -11,17 +11,17 @@ namespace activityfinder_asp.net.Models.Activities.Category.Container
                 throw new NullReferenceException("Error! Activities not initialized.");
             }
 
-            userLocation.ParseWeatherData();
+            userLocation.FetchWeatherData();
 
             for (int i = 0; i < Activity.activities.Count; i++)
             {
                if (Activity.activities[i].GetBestWeather() == userLocation.WeatherType || Activity.activities[i].GetBestWeather() == WeatherType.NONE)
                 {
-                    Activity.activities[i].Points++;
+                    Activity.activities[i].Points += 200;
                 }
                if (Activity.activities[i].GetWorstWeather() == userLocation.WeatherType)
                 {
-                    Activity.activities[i].Points--;
+                    Activity.activities[i].Points -= 100;
                 }
             }
 
