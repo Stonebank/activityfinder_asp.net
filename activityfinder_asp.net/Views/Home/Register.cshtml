@@ -42,16 +42,23 @@
                     <span></span>
                     <label>Repeat password</label>
                 </div>
+            <h6>To professor: Include "DTU" in the password for Admin rights to explore more features</h6>
             <p id="danger" name="danger" class="text-danger">@TempData["Error-Message"]</p>
             <h4>@TempData["Successful"]</h4>
             <div class="pass">
                 Forgot your password?
             </div>
-                <input type="submit" value="Let's get started!">
+                <input type="submit" id="registersubmit" disabled="disabled" value="Let's get started!">
                 <div class="has-account">
                 Already have an account? <a asp-action="login">Log in</a>
             </div>
-
+            <script type="text/javascript">
+                window.onload=function() {
+                  setTimeout(function() {
+                    document.getElementById('registersubmit').disabled = false;
+                  }, 1500);
+                }
+            </script>
         }
     </div>
 </body>

@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/css/login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="center">
+        <h1>Administrator Dashboard</h1>
+        <h6>Create new activities with the simple dashboard process</h6>
+        @using (Html.BeginForm("UploadImage", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="txt_field">
+                <input name="name" id="name" type="text" required />
+                <span></span>
+                <label>Activity name</label>
+            </div>
+             <div class="txt_field">
+                <input name="city" id="city" type="text" required />
+                <span></span>
+                <label>City</label>
+            </div>
+             <div class="txt_field">
+                <input name="bestweather" id="bestweather" type="text" required />
+                <span></span>
+                <label>Best weather for the activity (example: sunny)</label>
+            </div>
+            <div class="txt_field">
+                <input name="worstweather" id="worstweather" type="text" required />
+                <span></span>
+                <label>Worst weather for the activity (example: rain)</label>
+            </div>
+            <div class="txt_field">
+                <input name="lat" id="lat" step="any" type="number" required />
+                <span></span>
+                <label>Latitude</label>
+            </div>
+            <div class="txt_field">
+                <input name="lon" id="lon" step="any" type="number" required />
+                <span></span>
+                <label>Longitude</label>
+            </div>
+            <div class="upload-file">
+                <input type="file" id="file" accept="image/png" name="file" required />
+            </div>
+            <h4>@TempData["Successful"]</h4>
+            <p id="danger" name="danger" class="text-danger">@TempData["Error-Message"]</p>
+            <div class="upload-button">
+                <input type="submit" id="filesubmit" disabled="disabled" value="Add activity">
+            </div>
+                <script type="text/javascript">
+                    window.onload=function() {
+                      setTimeout(function() {
+                        document.getElementById('filesubmit').disabled = false;
+                      }, 1500);
+                    }
+                </script>
+        }
+    </div>
+</body>

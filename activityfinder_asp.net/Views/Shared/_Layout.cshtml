@@ -35,6 +35,10 @@
             <li><a asp-action="discover">Discover</a></li>
                 @if (Context.Session.GetString("email") != null)
                 {
+                    @if (Context.Session.GetString("admin") != null)
+                    {
+                        <li><a asp-action="addactivity">Add new activity</a></li>
+                    }
                     <li><a asp-action="logout">Logout</a></li>
                 } else
                 {

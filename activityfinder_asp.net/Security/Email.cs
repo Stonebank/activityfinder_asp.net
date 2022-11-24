@@ -9,7 +9,7 @@ namespace activityfinder_asp.net.Security
 
         public static void Send(string recipent, string subject, string body)
         {
-            var fromAddress = new MailAddress("activityjava@gmail.com", "ActivityFinder .net");
+            var fromAddress = new MailAddress("activityjava@gmail.com", "Hassan K - s205409");
             var toAddress = new MailAddress(recipent, recipent);
             const string fromPassword = "vdvrdvofdiewbgmk";
 

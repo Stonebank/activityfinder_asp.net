@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using activityfinder_asp.net.Enum;
+using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace activityfinder_asp.net.Models.Dto
@@ -44,6 +45,8 @@ namespace activityfinder_asp.net.Models.Dto
         public string RepeatPassword { get; set; }
 
         public bool Verified { get; set; }
+
+        public Rights rights { get; set; }
 
     }
 }
