@@ -1,167 +1,194 @@
 [
   {
-    "name": "Goboat",
-    "city": "København",
-    "image_path": "/image/activity/Goboat.png",
-    "points": 0,
-    "coordinate": {
-      "latitude": 55.66924392080051,
-      "longitude": 12.578563056059016
+    "Coordinate": {
+      "Latitude": 55.66924392080051,
+      "Longitude": 12.578563056059016
     },
-    "weatherTypes": [
-      "SUNNY",
-      "RAIN"
+    "WeatherTypes": [
+      0,
+      1
     ],
-    "isFavorite": false
+    "Name": "Goboat",
+    "City": "København",
+    "Image_Path": "/image/activity/Goboat.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   },
   {
-    "name": "Svanecykler",
-    "city": "København",
-    "image_path": "/image/activity/Svanecykler.png",
-    "points": 0,
-    "coordinate": {
-      "latitude": 55.68682485679956,
-      "longitude": 12.561920127248799
+    "Coordinate": {
+      "Latitude": 55.68682485679956,
+      "Longitude": 12.561920127248799
     },
-    "weatherTypes": [
-      "SUNNY",
-      "RAIN"
+    "WeatherTypes": [
+      0,
+      1
     ],
-    "isFavorite": false
+    "Name": "Svanecykler",
+    "City": "København",
+    "Image_Path": "/image/activity/Svanecykler.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   },
   {
-    "name": "København zoo",
-    "city": "Frederiksberg",
-    "image_path": "/image/activity/Københavnzoo.png",
-    "points": 0,
-    "coordinate": {
-      "latitude": 55.67311570731192,
-      "longitude": 12.519043013566618
+    "Coordinate": {
+      "Latitude": 55.67311570731192,
+      "Longitude": 12.519043013566618
     },
-    "weatherTypes": [
-      "SUNNY",
-      "CLOUD"
+    "WeatherTypes": [
+      0,
+      2
     ],
-    "isFavorite": false
+    "Name": "København zoo",
+    "City": "Frederiksberg",
+    "Image_Path": "/image/activity/Københavnzoo.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   },
   {
-    "name": "Den Blå planet",
-    "city": "Amager",
-    "image_path": "/image/activity/DenBlåplanet.png",
-    "points": 0,
-    "coordinate": {
-      "latitude": 55.63818999707165,
-      "longitude": 12.655983665852741
+    "Coordinate": {
+      "Latitude": 55.63818999707165,
+      "Longitude": 12.655983665852741
     },
-    "weatherTypes": [
-      "NONE",
-      "NONE"
+    "WeatherTypes": [
+      6,
+      6
     ],
-    "isFavorite": false
+    "Name": "Den Blå planet",
+    "City": "Amager",
+    "Image_Path": "/image/activity/DenBlåplanet.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   },
   {
-    "name": "Frederiksborg Slot",
-    "city": "Hillerød",
-    "image_path": "/image/activity/FrederiksborgSlot.png",
-    "points": 0,
-    "coordinate": {
-      "latitude": 55.93497665298331,
-      "longitude": 12.301186467891375
+    "Coordinate": {
+      "Latitude": 55.93497665298331,
+      "Longitude": 12.301186467891375
     },
-    "weatherTypes": [
-      "SUNNY",
-      "NONE"
+    "WeatherTypes": [
+      0,
+      6
     ],
-    "isFavorite": false
+    "Name": "Frederiksborg Slot",
+    "City": "Hillerød",
+    "Image_Path": "/image/activity/FrederiksborgSlot.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   },
   {
-    "name": "Mønts klint",
-    "city": "Møn",
-    "image_path": "/image/activity/Møntsklint.png",
-    "points": 0,
-    "coordinate": {
-      "latitude": 54.98458760495932,
-      "longitude": 12.542480065047174
+    "Coordinate": {
+      "Latitude": 54.98458760495932,
+      "Longitude": 12.542480065047174
     },
-    "weatherTypes": [
-      "SUNNY",
-      "STORM"
+    "WeatherTypes": [
+      0,
+      4
     ],
-    "isFavorite": false
+    "Name": "Mønts klint",
+    "City": "Møn",
+    "Image_Path": "/image/activity/Møntsklint.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   },
   {
-    "name": "Thy national park",
-    "city": "Thy",
-    "image_path": "/image/activity/Thynationalpark.png",
-    "points": 0,
-    "coordinate": {
-      "latitude": 56.95855150409616,
-      "longitude": 8.368504394590445
+    "Coordinate": {
+      "Latitude": 56.95855150409616,
+      "Longitude": 8.368504394590445
     },
-    "weatherTypes": [
-      "SUNNY",
-      "RAIN"
+    "WeatherTypes": [
+      0,
+      1
     ],
-    "isFavorite": false
+    "Name": "Thy national park",
+    "City": "Thy",
+    "Image_Path": "/image/activity/Thynationalpark.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   },
   {
-    "name": "Legoland",
-    "city": "Billund",
-    "image_path": "/image/activity/Legoland.png",
-    "points": 0,
-    "coordinate": {
-      "latitude": 55.73508091525627,
-      "longitude": 9.124506784342076
+    "Coordinate": {
+      "Latitude": 55.73508091525627,
+      "Longitude": 9.124506784342076
     },
-    "weatherTypes": [
-      "SUNNY",
-      "RAIN"
+    "WeatherTypes": [
+      0,
+      1
     ],
-    "isFavorite": false
+    "Name": "Legoland",
+    "City": "Billund",
+    "Image_Path": "/image/activity/Legoland.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   },
   {
-    "name": "Bonbon land",
-    "city": "Næstved",
-    "image_path": "/image/activity/Bonbonland.png",
-    "points": 0,
-    "coordinate": {
-      "latitude": 55.260896305927005,
-      "longitude": 11.863348303742372
+    "Coordinate": {
+      "Latitude": 55.260896305927005,
+      "Longitude": 11.863348303742372
     },
-    "weatherTypes": [
-      "SUNNY",
-      "RAIN"
+    "WeatherTypes": [
+      0,
+      1
     ],
-    "isFavorite": false
+    "Name": "Bonbon land",
+    "City": "Næstved",
+    "Image_Path": "/image/activity/Bonbonland.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   },
   {
-    "name": "Kronborg slot",
-    "city": "Helsingør",
-    "image_path": "/image/activity/Kronborgslot.png",
-    "points": 0,
-    "coordinate": {
-      "latitude": 56.039203122712394,
-      "longitude": 12.622153049790171
+    "Coordinate": {
+      "Latitude": 56.039203122712394,
+      "Longitude": 12.622153049790171
     },
-    "weatherTypes": [
-      "SUNNY",
-      "RAIN"
+    "WeatherTypes": [
+      0,
+      1
     ],
-    "isFavorite": false
+    "Name": "Kronborg slot",
+    "City": "Helsingør",
+    "Image_Path": "/image/activity/Kronborgslot.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   },
   {
-    "name": "Tivoli",
-    "city": "København",
-    "image_path": "/image/activity/Tivoli.png",
-    "points": 0,
-    "coordinate": {
-      "latitude": 55.6737,
-      "longitude": 12.5681
+    "Coordinate": {
+      "Latitude": 55.6737,
+      "Longitude": 12.5681
     },
-    "weatherTypes": [
-      "SUNNY",
-      "SNOW"
+    "WeatherTypes": [
+      0,
+      5
     ],
-    "isFavorite": false
+    "Name": "Tivoli",
+    "City": "København",
+    "Image_Path": "/image/activity/Tivoli.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
+  },
+  {
+    "Coordinate": {
+      "Latitude": 55.48800554996626,
+      "Longitude": 8.411006938623043
+    },
+    "WeatherTypes": [
+      0,
+      1
+    ],
+    "Name": "Men by the sea",
+    "City": "Esbjerg",
+    "Image_Path": "/image/activity/Men by the sea.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   }
 ]
