@@ -29,11 +29,14 @@
                                 <span class="address">@activity.City</span>
                                 <span class="distance">@Model.GetDistance(activity)</span>
                             </div>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
+                            <div class="best-match">
+                                @if (activityfinder_asp.net.Models.Activities.Activity.activities[0].Name == activity.Name)
+                                {
+                                    <h4><b>Recommended</b></h4>
+                                }
                             </div>
                             <div class="like">
-                                <i class="fa-solid fa-heart"></i>
+                                <!---<i class="fa-solid fa-heart" onclick="@Url.Action("Hello", "Home")"></i>--->
                             </div>
                             <div class="button">
                                 <button class="send-coords" id="coordbutton" onclick="window.open('@activity.Link()')">Send to Google Maps</button>

@@ -47,12 +47,12 @@ namespace activityfinder_asp.net.Models.Location
             {
                 throw new Exception("Error! Something went wrong while parsing the Weather Data...");
             }
-            current_temperature = Math.Round(main["temp"].Value<Double>());
-            maximum_temperature = Math.Round(main["temp_max"].Value<Double>());
-            minimum_temperature = Math.Round(main["temp_min"].Value<Double>());
-            feels_like = Math.Round(main["feels_like"].Value<Double>());
+            current_temperature = Math.Round(main["temp"].Value<double>());
+            maximum_temperature = Math.Round(main["temp_max"].Value<double>());
+            minimum_temperature = Math.Round(main["temp_min"].Value<double>());
+            feels_like = Math.Round(main["feels_like"].Value<double>());
 
-            string currentWeather = weather[0]["description"].Value<String>();
+            string currentWeather = weather[0]["description"].Value<string>();
 
             switch (currentWeather.ToLower())
             {

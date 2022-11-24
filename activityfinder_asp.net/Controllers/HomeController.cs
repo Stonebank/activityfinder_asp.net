@@ -17,9 +17,6 @@ namespace activityfinder_asp.net.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private double lat;
-        private double lon;
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -73,9 +70,14 @@ namespace activityfinder_asp.net.Controllers
                 return Redirect("Login");
             }
 
-            Debug.WriteLine(lat + " "+  lon);
+            var english = CultureInfo.GetCultureInfo("en-GB");
+            Thread.CurrentThread.CurrentCulture = english;
 
-            UserLocation userLocation = new UserLocation(new Coordinate(55.7314, 12.3962));
+            // DTU ballerup is set to default coordinates
+            var lat = Double.Parse(session.GetString("lat") ?? "55.7314");
+            var lon = Double.Parse(session.GetString("lon") ?? "12.3962");
+
+            UserLocation userLocation = new UserLocation(new Coordinate(lat, lon));
 
             List<Category> categories = new List<Category>
             {
@@ -105,13 +107,13 @@ namespace activityfinder_asp.net.Controllers
         [HttpPost]
         public void FetchCoordinates(string[] coords)
         {
-            var english = CultureInfo.GetCultureInfo("en-GB");
-            Thread.CurrentThread.CurrentCulture = english;
+            ISession session = HttpContext.Session;
+            if (session.GetString("email") != null)
+            {
+                session.SetString("lat", coords[0]);
+                session.SetString("lon", coords[1]);
+            }
 
-            lat = Double.Parse(coords[0]);
-            lon = Double.Parse(coords[1]);
-
-            Debug.WriteLine(lat + " " + lon);
         }
 
         [HttpPost]
@@ -185,7 +187,7 @@ namespace activityfinder_asp.net.Controllers
             ISession session = HttpContext.Session;
             if (session.GetString("email") != null)
             {
-                session.Remove("email");
+                session.Clear();
             }
             return Redirect("Index");
         }
