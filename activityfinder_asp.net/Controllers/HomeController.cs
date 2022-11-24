@@ -38,6 +38,10 @@ namespace activityfinder_asp.net.Controllers
                     TempData["Error-Message"] = "Oops... Your verification wasn't successful.";
                     return View();
                 }
+                if (account.Verified)
+                {
+                    return View("index");
+                }
                 account.Verified = true;
                 accountHandler.Save(account);
                 TempData["Successful"] = "Welcome onboard! Your account is now confirmed.";
@@ -138,7 +142,7 @@ namespace activityfinder_asp.net.Controllers
             }
             if (!Constant.HasPasswordRequirement(account.Password))
             {
-                TempData["Error-Message"] = "Error! Password is not strong enough. (debug pass: dTu1235678!)";
+                TempData["Error-Message"] = "Error! Password is not strong enough. (debug pass: s205409DTU!)";
                 return View("Register");
             }
             account.Password = AES256.Encrypt(account.Password);
@@ -177,6 +181,7 @@ namespace activityfinder_asp.net.Controllers
                 TempData["Error-Message"] = "Please verify your account in order to login.";
                 return View("Login");
             }
+
             ISession session = HttpContext.Session;
             session.SetString("email", account.Email);
             return View("Index");
