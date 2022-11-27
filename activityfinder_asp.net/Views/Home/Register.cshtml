@@ -17,6 +17,7 @@
         <h1>Sign up to get started!</h1>
         @using (Html.BeginForm("RegisterAccount", "Home", FormMethod.Post))
         {
+            @Html.AntiForgeryToken();
     <div class="txt_field">
                     <input name="name" id="fullname" type="text" required />
                     <span></span>

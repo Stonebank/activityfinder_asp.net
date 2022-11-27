@@ -12,9 +12,12 @@
 <body>
     <div class="center">
         <h1>Administrator Dashboard</h1>
-        <h6>Create new activities with the simple dashboard process</h6>
+        <h6>Add new activities by filling out the form</h6>
         @using (Html.BeginForm("UploadImage", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
+
+            @Html.AntiForgeryToken();
+
             <div class="txt_field">
                 <input name="name" id="name" type="text" required />
                 <span></span>

@@ -15,6 +15,7 @@
         <h1>Welcome!</h1>
          @using (Html.BeginForm("LoginAccount", "Home", FormMethod.Post))
         {
+            @Html.AntiForgeryToken();
             <div class="txt_field">
                 <input name="email" id="email" type="text" required />
                 <span></span>

@@ -9,7 +9,7 @@
         WIND,
         STORM,
         SNOW,
-        NONE,
+        NONE
 
     }
 }

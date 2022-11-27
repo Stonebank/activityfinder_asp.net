@@ -190,5 +190,21 @@
     "Points": 0,
     "Ratings": null,
     "IsFavorite": false
+  },
+  {
+    "Coordinate": {
+      "Latitude": 55.6813,
+      "Longitude": 12.5757
+    },
+    "WeatherTypes": [
+      0,
+      1
+    ],
+    "Name": "Runde tårn",
+    "City": "København",
+    "Image_Path": "/image/activity/Runde tårn.png",
+    "Points": 0,
+    "Ratings": null,
+    "IsFavorite": false
   }
 ]

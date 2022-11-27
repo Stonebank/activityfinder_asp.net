@@ -201,6 +201,15 @@ namespace activityfinder_asp.net.Controllers
 
         public IActionResult AddActivity()
         {
+            ISession session = HttpContext.Session;
+            if (session == null)
+            {
+                return View("Login");
+            }
+            if (session.GetString("admin") == null)
+            {
+                return View("Index");
+            }
             return View("ActivityDashBoard");
         }
 
@@ -217,6 +226,14 @@ namespace activityfinder_asp.net.Controllers
         [HttpPost]
         public ActionResult UploadImage(string name, string city, string bestweather, string worstweather, string lat, string lon, IFormFile file)
         {
+
+            ISession session = HttpContext.Session;
+
+            if (session.Get("admin") == null)
+            {
+                return View("Error");
+            }
+
             if (file == null)
             {
                 TempData["Error-Message"] = "An error has occured! Try again.";
@@ -236,6 +253,15 @@ namespace activityfinder_asp.net.Controllers
                 TempData["Error-Message"] = "This image already exists.";
                 return View("ActivityDashBoard");
             }
+
+            //WeatherType _bestWeather = (WeatherType) System.Enum.Parse(typeof(WeatherType), bestweather);
+            //WeatherType _worstWeather = (WeatherType) System.Enum.Parse(typeof(WeatherType), worstweather);
+
+            //if (!System.Enum.IsDefined(typeof(WeatherType), _bestWeather) || !System.Enum.IsDefined(typeof(WeatherType), _worstWeather))
+            //{
+               // TempData["Error-Message"] = "Error! This weather type does not exist. For example: sunny or rain";
+                //return View("ActivityDashBoard");
+            //}
 
             var english = CultureInfo.GetCultureInfo("en-GB");
             Thread.CurrentThread.CurrentCulture = english;

@@ -9,6 +9,10 @@ namespace activityfinder_asp.net.Models.Dto
 
         public static void ParseDataBase()
         {
+            if (!Directory.Exists("./data/"))
+            {
+                throw new DirectoryNotFoundException("Error! Directory data does not exist. Create one in main folder");
+            }
             DirectoryInfo directory = new DirectoryInfo("./data/");
             foreach (FileInfo file in directory.GetFiles())
             {

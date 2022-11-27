@@ -12,6 +12,10 @@ namespace activityfinder_asp.net.Service
     {
         public Account Load(string email)
         {
+            if (!Directory.Exists("./data/"))
+            {
+                throw new DirectoryNotFoundException("Error! Directory data does not exist. Create one in main folder");
+            }
             if (Constant.accounts is null)
             {
                 throw new Exception("Error! Account DB is null.");
@@ -27,6 +31,10 @@ namespace activityfinder_asp.net.Service
 
         public Account Load(long id)
         {
+            if (!Directory.Exists("./data/"))
+            {
+                throw new DirectoryNotFoundException("Error! Directory data does not exist. Create one in main folder");
+            }
             using (StreamReader reader = File.OpenText("./data/" + id + ".json"))
             {
                 string json = reader.ReadToEnd();
