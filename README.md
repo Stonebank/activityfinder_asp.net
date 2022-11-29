@@ -3,10 +3,20 @@
 Activityfinder is a ASP.NET MVC project made with C# and .net 6.0. The concept behind this application is to give the user an easy way to find various activities nearby.
 
 # How to setup and run the project
-TODO
+
+To run the project, you should do the following:
+1. Clone or download the project directly from the Github
+2. Open the ".sln" project file
+3. Execute project by pressing the green arrow button in Visual studio
 
 # Requirements
-TODO
+
+Requirement  | Version
+------------- | -------------
+Visual Studio / Visual Studio Code  | Latest version 
+C# | 10.0 or above
+.NET  | 6.0
+.ASP.NET  | 6.0
 
 ------------------------
 
