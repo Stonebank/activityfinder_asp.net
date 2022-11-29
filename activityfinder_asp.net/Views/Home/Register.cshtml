@@ -47,7 +47,7 @@
             <p id="danger" name="danger" class="text-danger">@TempData["Error-Message"]</p>
             <h4>@TempData["Successful"]</h4>
             <div class="pass">
-                Forgot your password?
+                <a asp-action="RequestForgotPassword">Forgot your password?</a>
             </div>
                 <input type="submit" id="registersubmit" disabled="disabled" value="Let's get started!">
                 <div class="has-account">

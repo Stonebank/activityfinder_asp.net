@@ -63,5 +63,16 @@ namespace activityfinder_asp.net.Service
             Email.Send(account.Email, "Confirm your registration", "Hello " + account.Name + "!<br><br>Thank you for registering. Click the link below to complete your registration<br>" + link);
         }
 
+        public void SendRecoveryEmail(Account account, string host, string token)
+        {
+            string link = "https://" + host + "/home/requestchangepassword/request?token=" + token;
+            Email.Send(account.Email, "Reset your password", "Hi " + account.Name + ",<br><br>Someone recently requested a password change for your account. If this was you, you can set a new password here:<br>" + link + "<br><br>If you didn't request this password change, we strongly suggest to change your password as soon as possible.");
+        }
+
+        public void SendEmail(Account account, string topic, string body)
+        {
+            Email.Send(account.Email, topic, body);
+        }
+
     }
 }

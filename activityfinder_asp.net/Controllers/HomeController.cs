@@ -61,6 +61,26 @@ namespace activityfinder_asp.net.Controllers
             return View();
         }
 
+        public IActionResult RequestForgotPassword()
+        {
+            ISession session = HttpContext.Session;
+            if (session.GetString("email") != null)
+            {
+                return Redirect("index");
+            }
+            return View();
+        }
+
+        public IActionResult RequestChangePassword()
+        {
+            ISession session = HttpContext.Session;
+            if (session.GetString("email") != null)
+            {
+                return Redirect("index");
+            }
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -121,7 +141,7 @@ namespace activityfinder_asp.net.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterAccount(Account account, bool checkRights)
+        public ActionResult RegisterAccount(Account account)
         {
             AccountHandler accountHandler = new AccountHandler();
 
@@ -158,6 +178,41 @@ namespace activityfinder_asp.net.Controllers
             accountHandler.Save(account);
             TempData["Successful"] = "Almost done! We've sent a confirmation e-mail to " + account.Email + ".";
             return View("Register");
+        }
+
+        [HttpPost]
+        public ActionResult ForgotPassword(Account account)
+        {
+            AccountHandler accountHandler = new AccountHandler();
+            Account user = accountHandler.Load(account.Email);
+            if (user is not null)
+            {
+                accountHandler.SendRecoveryEmail(user, Request.Host.Value, Convert.ToString(user.Id));
+            }
+            TempData["Response"] = "If " + account.Email + " exists, a recovery link will be sent to this e-mail.";
+            return View("RequestForgotPassword");
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(Account account)
+        {
+            if (!account.Password.Equals(account.RepeatPassword))
+            {
+                TempData["Error-Message"] = "The two passwords that you entered do not match.";
+                return View("RequestChangePassword");
+            }
+            if (!Constant.HasPasswordRequirement(account.Password))
+            {
+                TempData["Error-Message"] = "Error! Password is not strong enough. (debug pass: s205409DTU!)";
+                return View("RequestChangePassword");
+            }
+            AccountHandler accountHandler = new AccountHandler();
+            Account user = accountHandler.Load(account.Email);
+            user.Password = AES256.Encrypt(account.Password);
+            accountHandler.Save(user);
+            accountHandler.SendEmail(user, "Change password was successful!", "Dear " + user.Name + ",<br><br>Your password change was complete and you can now sign in with your new password.");
+            TempData["Successful"] = "Password change successful!";
+            return View("RequestChangePassword");
         }
 
         [HttpPost] 
