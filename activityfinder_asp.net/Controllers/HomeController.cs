@@ -103,7 +103,6 @@ namespace activityfinder_asp.net.Controllers
             if (Models.Activities.Activity.activities is not null)
             {
                 Models.Activities.Activity.activities = Models.Activities.Activity.activities.OrderBy(o => o.Points).Reverse().ToList();
-
             }
 
             return View(userLocation);
@@ -254,14 +253,20 @@ namespace activityfinder_asp.net.Controllers
                 return View("ActivityDashBoard");
             }
 
-            //WeatherType _bestWeather = (WeatherType) System.Enum.Parse(typeof(WeatherType), bestweather);
-            //WeatherType _worstWeather = (WeatherType) System.Enum.Parse(typeof(WeatherType), worstweather);
+            /*if (System.Enum.Parse(typeof(WeatherType), bestweather) == null || System.Enum.Parse(typeof(WeatherType), worstweather) == null)
+            {
+                TempData["Error-Message"] = "Error! This weather type does not exist. For example: sunny or rain";
+                return View("ActivityDashBoard");
+            }
 
-            //if (!System.Enum.IsDefined(typeof(WeatherType), _bestWeather) || !System.Enum.IsDefined(typeof(WeatherType), _worstWeather))
-            //{
-               // TempData["Error-Message"] = "Error! This weather type does not exist. For example: sunny or rain";
-                //return View("ActivityDashBoard");
-            //}
+            WeatherType _bestWeather = (WeatherType) System.Enum.Parse(typeof(WeatherType), bestweather);
+            WeatherType _worstWeather = (WeatherType) System.Enum.Parse(typeof(WeatherType), worstweather);
+
+            if (_bestWeather == _worstWeather)
+            {
+                TempData["Error-Message"] = "Error! Best weather and worst weather are identical value";
+                return View("ActivityDashBoard");
+            }*/
 
             var english = CultureInfo.GetCultureInfo("en-GB");
             Thread.CurrentThread.CurrentCulture = english;
@@ -282,8 +287,8 @@ namespace activityfinder_asp.net.Controllers
             activity.Image_Path = path.Replace("./wwwroot", "");
             activity.Coordinate = new Coordinate(_lat, _lon);
             activity.WeatherTypes = new WeatherType[2];
-            activity.WeatherTypes[0] = WeatherType.SUNNY;
-            activity.WeatherTypes[1] = WeatherType.RAIN;
+            activity.WeatherTypes[0] = WeatherType.SUNNY; //_bestWeather
+            activity.WeatherTypes[1] = WeatherType.RAIN; //_worstWeather
 
             using (Stream fileStream = new FileStream(path, FileMode.Create, FileAccess.Write))
             {
