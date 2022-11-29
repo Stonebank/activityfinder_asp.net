@@ -10,7 +10,13 @@ To run the project, you should do the following:
 3. Execute project by pressing the green arrow button in Visual studio
 
 # Requirements
-TODO
+
+Requirement  | Version
+------------- | -------------
+Visual Studio / Visual Studio Code  | Latest version 
+C# | 10.0 or above
+.NET  | 6.0
+.ASP.NET  | 6.0
 
 ------------------------
 
