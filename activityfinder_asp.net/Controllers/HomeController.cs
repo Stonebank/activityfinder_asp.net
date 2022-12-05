@@ -239,11 +239,11 @@ namespace activityfinder_asp.net.Controllers
                 return View("Login");
             }
 
-            if (!user.Verified)
+            /*if (!user.Verified)
             {
                 TempData["Error-Message"] = "Please verify your account in order to login.";
                 return View("Login");
-            }
+            }*/
             ISession session = HttpContext.Session;
             session.SetString("email", account.Email);
             if (user.rights == Enum.Rights.ADMIN)
