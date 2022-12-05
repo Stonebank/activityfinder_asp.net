@@ -16,9 +16,11 @@ Requirement  | Version
 Visual Studio / Visual Studio Code  | Latest version 
 C# | 10.0 or above
 .NET  | 6.0
-.ASP.NET  | 6.0
+.ASP.NET  | 6.0 
 
 ------------------------
+
+I used Google Chrome version 108.0.5359.71 for this project 
 
 # Developer
 This project was made by Hassan K (s205409) for the course [62413 Avanceret objektorienteret programmering med C# og .NET](https://kurser.dtu.dk/course/62413) at the Technical university of Denmark. 
